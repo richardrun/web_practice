@@ -1,0 +1,35 @@
+header{
+    background-color: antiquewhite;
+}
+
+nav{
+    float: left;
+    width: 10%;
+    height: 350px;
+    background: darkmagenta;
+    text-align: left;
+    padding:5px;
+    line-height:30px;
+}
+
+section {
+    background: darkorange;
+    height: 350px;
+    padding: 5px;
+    width: 30%;
+    float: left;
+}
+
+footer{
+    background-color: yellow;
+    padding: 5px;
+    clear: both;
+}
+
+aside{
+    background: gray;
+    height:350px;
+    padding: 5px;
+    width: 30%;
+    float: right;
+}
