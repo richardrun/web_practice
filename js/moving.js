@@ -3,11 +3,11 @@
  */
 
 
-
+var numOfImg;
 var container = [];
 var iForOpacity = 1;
-var oldimg = document.getElementById("pic");
-var img = document.getElementById("pic");
+//var oldimg = document.getElementsByClassName("pic2");
+var img = document.getElementsByClassName("pic");
 var turn = false;
 //var slowApper;
 var bright = 1;
@@ -17,7 +17,32 @@ for (var i = 0;i < 11; i++)
 {
     container[i] = "src/test" + (i+1)+".jpg";
 }
-img.style.opacity = 0;
+//img.style.opacity = 0;
+
+
+//////////////////////////////
+function slideSwitch() {
+    var $active = $("#midPicdiv img.active");
+    if ($active.length == 0) $active = $('#midPicdiv img:last');
+
+    var $next = $active.next().length ? $active.next() : $("#midPicdiv img:first");
+
+    $active.addClass('nextActive');
+    $next.css({opacity: 0})
+        .addClass('active')
+        .animate({opacity: 1}, 1000, function () {
+            $active.removeClass('active nextActive');
+        });
+}
+
+$(function() {
+    setInterval( "slideSwitch()", 2000 );
+});
+
+
+/////////////////////////////////////
+
+
 //autoRun();
 // first disapper the pic
 //var slowDisapper = setInterval(disapper,20);
@@ -28,12 +53,7 @@ img.style.opacity = 0;
 
 //setInterval(switcher,2000);
 
-function autoRun(){
-
-
-}
-//setInterval(changePic, 40000);
-setInterval(appear2disappear, 20);
+//setInterval(appear2disappear, 20);
 
 function changePic(){
     //img.opacity = 0;
