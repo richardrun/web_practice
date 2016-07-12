@@ -1,0 +1,81 @@
+*{
+    box-sizing: border-box;
+}
+
+#midPicdiv{
+    left: 30%;
+    top: 10%;
+    right: 30%;
+    background-color: black;
+    opacity: 0.8;
+    width: 40%;
+    height: 70%;
+    position: absolute;
+    border-style: dashed;
+    border-color: aqua;
+}
+
+/*
+///////////////////////////
+*/
+
+#midPicdiv img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 8;
+}
+
+#midPicdiv .pic.active{
+    z-index: 10;
+}
+
+#midPicdiv .pic.nextActive{
+    z-index: 9;
+}
+
+/*
+///////////////////////////
+*/
+
+#leftClickdiv{
+    position: absolute;
+    width: 5%;
+    height: 7%;
+    top:45%;
+    left:20%;
+}
+
+#rightClickdiv{
+    position: absolute;
+    width: 5%;
+    height: 7%;
+    top:45%;
+    right:20%;
+}
+
+#leftPic{
+    width: 100%;
+    height: 100%;
+}
+
+#rightPic{
+    width: 100%;
+    height: 100%;
+}
+
+button{
+    width: 100%;
+    height: 100%;
+}
+
+#arow{
+    width: 100%;
+    clear: both;
+}
+
+#main{
+    width: 100%;
+    height: 700px;
+    background-color: bisque;
+}
