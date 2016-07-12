@@ -23,6 +23,7 @@ for (var i = 0;i < 11; i++)
 
 var numOfImg = 11;
 var imgArray = new Array();
+var imgIndex = 2;
 //Store image into a array
 
 for(var i=0;i<numOfImg;i++)
@@ -30,25 +31,47 @@ for(var i=0;i<numOfImg;i++)
     imgArray[i] = new Image();
     imgArray[i].src = "src/test"+ (i+1) + ".jpg";
     imgArray[i].className += "pic";
-    document.getElementById("midPicdiv").appendChild(imgArray[i]);
+    //document.getElementById("midPicdiv").appendChild(imgArray[i]);
 }
 
+
 function slideSwitch() {
+
     var $active = $("#midPicdiv img.active");
     if ($active.length == 0) $active = $('#midPicdiv img:last');
 
     var $next = $active.next().length ? $active.next() : $("#midPicdiv img:first");
 
     $active.addClass('nextActive');
+    $active.attr("id", "p1");
+
     $next.css({opacity: 0})
         .addClass('active')
-        .animate({opacity: 1}, 1000, function () {
+        .animate({opacity: 1}, 700, function () {
             $active.removeClass('active nextActive');
         });
+
+    var idTemp = document.getElementById("p1");
+    document.getElementById("midPicdiv").removeChild(idTemp);
+
+    var imgParent = document.getElementById("midPicdiv");
+
+    if(imgIndex<11)
+    {
+        var nextPic = imgParent.appendChild(imgArray[imgIndex]);
+        imgParent.lastChild.style.opacity=0;
+        imgIndex++;
+    }else {
+        imgIndex =0
+        imgParent.appendChild(imgArray[imgIndex]);
+        imgParent.lastChild.style.opacity=0;
+        imgIndex++;
+    }
+
 }
 
 $(function() {
-    setInterval( "slideSwitch()", 2000 );
+    setInterval( "slideSwitch()", 4000 );
 });
 
 
