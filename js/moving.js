@@ -3,7 +3,6 @@
  */
 
 
-var numOfImg;
 var container = [];
 var iForOpacity = 1;
 //var oldimg = document.getElementsByClassName("pic2");
@@ -20,7 +19,20 @@ for (var i = 0;i < 11; i++)
 //img.style.opacity = 0;
 
 
-//////////////////////////////
+/////////////-- Slide Show -- /////////////////
+
+var numOfImg = 11;
+var imgArray = new Array();
+//Store image into a array
+
+for(var i=0;i<numOfImg;i++)
+{
+    imgArray[i] = new Image();
+    imgArray[i].src = "src/test"+ (i+1) + ".jpg";
+    imgArray[i].className += "pic";
+    document.getElementById("midPicdiv").appendChild(imgArray[i]);
+}
+
 function slideSwitch() {
     var $active = $("#midPicdiv img.active");
     if ($active.length == 0) $active = $('#midPicdiv img:last');
@@ -40,7 +52,7 @@ $(function() {
 });
 
 
-/////////////////////////////////////
+//////////////-- End of slide show --///////////////////////
 
 
 //autoRun();
