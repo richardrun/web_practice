@@ -23,7 +23,7 @@ for (var i = 0;i < 11; i++)
 
 var numOfImg = 11;
 var imgArray = new Array();
-var imgIndex = 2;
+var imgIndex = 3;
 //Store image into a array
 
 for(var i=0;i<numOfImg;i++)
@@ -31,7 +31,6 @@ for(var i=0;i<numOfImg;i++)
     imgArray[i] = new Image();
     imgArray[i].src = "src/test"+ (i+1) + ".jpg";
     imgArray[i].className += "pic";
-    //document.getElementById("midPicdiv").appendChild(imgArray[i]);
 }
 
 
@@ -47,9 +46,13 @@ function slideSwitch() {
 
     $next.css({opacity: 0})
         .addClass('active')
-        .animate({opacity: 1}, 700, function () {
+        .animate({opacity: 1}, 1000, "swing", function () {
             $active.removeClass('active nextActive');
         });
+
+   // $next.animate({left:-200, opacity: 0.3, width: "70%" },500);
+    //$next.animate({left:0, opacity: 1, width: "100%"},800);
+
 
     var idTemp = document.getElementById("p1");
     document.getElementById("midPicdiv").removeChild(idTemp);
@@ -70,110 +73,107 @@ function slideSwitch() {
 
 }
 
+
 $(function() {
-    setInterval( "slideSwitch()", 4000 );
+    setInterval( "slideSwitch()", 3000 );
 });
 
 
 //////////////-- End of slide show --///////////////////////
 
 
-//autoRun();
-// first disapper the pic
-//var slowDisapper = setInterval(disapper,20);
-//setTimeout(slowDisapper,2000);
+//   -- red box how -- //
+var redboxclass = document.getElementsByClassName("redbox");
+var boxtop = 20;
+var boxleft = 35;
+var count = 1;
 
-//auto switch photo
-//var flash = setInterval(randomMove,2000);
-
-//setInterval(switcher,2000);
-
-//setInterval(appear2disappear, 20);
-
-function changePic(){
-    //img.opacity = 0;
-
+function boxCreate()
+{
+    var box = new Image();
+    box.id= "redbox";
 }
 
+function buildLeftHeart() {
+    var tempBoxtop =boxtop;
+    var tempBoxLeft = boxleft;
+    var tempCount = count;
 
-function randomMove() {
-
-    var ran = (Math.random() * 10);
-    ran = (Math.floor(ran)) % 12;
-
-    // document.getElementById("midPic").style.display = 'none';
-
-    img = document.getElementById("pic");
-
-    img.src = container[ran];
-    //img.opacity = iForOpacity;
-}
-
-function switcher() {
-    if(turn==true)
+    for(var i=14; i>=1;i-=2)
     {
-        clearInterval(slowApper);
-        slowDisapper = setInterval(disapper, 20);
-        turn = false;
+        for(var j =i; j>=1;j--)
+        {
+            var box = new Image();
+            box.className= "redbox";
+            box.style.top = tempBoxtop+"%";
+            box.style.left = tempBoxLeft+"%";
+            tempBoxtop += 5;
+            document.getElementById("main").appendChild(box);
+        }
+        tempBoxLeft -= 5;
+        tempBoxtop = boxtop + 5*tempCount;
+        tempCount ++;
+    }
+}
 
-    }else if (turn==false)
+function buildRightHeart() {
+    var tempBoxtop =boxtop;
+    var tempBoxLeft = boxleft +20;
+    var tempCount = count;
+
+    for(var i=14; i>=1;i-=2)
     {
-        clearInterval(slowDisapper);
-        slowApper = setInterval(appear, 20);
-        turn = true;
+        for(var j =i; j>=1;j--)
+        {
+            var box = new Image();
+            box.className= "redbox";
+            box.style.top = tempBoxtop+"%";
+            box.style.left = tempBoxLeft+"%";
+            tempBoxtop += 5;
+            document.getElementById("main").appendChild(box);
+        }
+        tempBoxLeft += 5;
+        tempBoxtop = boxtop + 5*tempCount;
+        tempCount ++;
     }
 }
 
+function buildMidHeart() {
+    var tempBoxtop =boxtop + 10;
+    var tempBoxLeft = boxleft +5;
 
-function stopMove() {
-    //clearInterval(flash);
-}
-
-function flashing() {
-    flash = setInterval(randomMove,2000);
-}
-
-function disapper() {
-    if(iForOpacity>0.01)
+    for(var i =1; i<=2; i++)
     {
-        iForOpacity = iForOpacity - 0.01;
-        oldimg.style.opacity = iForOpacity;
+        for(var j =1; j<=13;j++)
+        {
+            var box = new Image();
+            box.className= "redbox";
+            box.style.top = tempBoxtop +"%";
+            box.style.left = tempBoxLeft+"%";
+            tempBoxtop += 5;
+            document.getElementById("main").appendChild(box);
+        }
+        tempBoxLeft += 10;
+        tempBoxtop =boxtop + 10;
     }
-}
 
-function stopDisapper() {
-    clearInterval(slowDisapper);
-}
 
-function appear2disappear(){
-    //var img = document.getElementById("pic");
-    if(img.style.opacity<1 && bright==1){
-        img.style.opacity = parseFloat(img.style.opacity) + 0.01;
-    }
-    if(img.style.opacity>0 && bright==0){
-        img.style.opacity = parseFloat(img.style.opacity) - 0.01;
-    }
-    if(parseFloat(img.style.opacity) >= 1 && bright == 1){
-        bright=0;
-    }
-    if(parseFloat(img.style.opacity) <= 0 && bright == 0){
-        bright=1;
-        var ran = (Math.random() * 10);
-        ran = (Math.floor(ran)) % 11;
-        // document.getElementById("midPic").style.display = 'none';
-        //img = document.getElementById("pic");
-        document.getElementById("pic").src = container[ran];
-    }
-}
-
-function appear() {
-    if(iForOpacity<0.93)
+    tempBoxtop =boxtop + 15;
+    tempBoxLeft = boxtop + 10;
+    
+    for(var j =1; j<=13;j++)
     {
-        iForOpacity = iForOpacity + 0.05;
-        img.style.opacity = iForOpacity+0.05;
+        var box = new Image();
+        box.className= "redbox";
+        box.style.top = tempBoxtop +"%";
+        box.style.left = tempBoxLeft+"%";
+        tempBoxtop += 5;
+        document.getElementById("main").appendChild(box);
     }
 }
 
-function testAlert() {
-    alert("test alert");
-}
+buildLeftHeart();
+buildRightHeart();
+buildMidHeart();
+
+//  -- end of red box -- //
