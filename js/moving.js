@@ -184,12 +184,14 @@ var $movingHeart = $("img.redbox");
 
 function animateHeart() {
     $movingHeart.animate({opacity: 1, width:"5%", height: "5%", backgroundColor:"red"}, 500);
-    $movingHeart.animate({opacity: 0.8, width:"5.5%", height: "5.5%"}, 500);
-    $movingHeart.animate({opacity: 1, width:"5%", height: "5%"}, 500);
+    $movingHeart.animate({opacity: 0.6, width:"5.5%", height: "5.5%"
+    , boxShadow: "0px 0px 50px 50px red inset"}, 500);
+    $movingHeart.animate({opacity: 1, width:"5%", height: "5%"
+        , boxShadow: "0px 0px 10px 10px red inset"}, 500);
 }
 
 
-//var heartStart = setInterval(animateHeart, 3000);
+var heartStart = setInterval(animateHeart, 3000);
 
 
 
