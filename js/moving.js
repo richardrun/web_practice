@@ -22,7 +22,7 @@ for (var i = 0;i < 11; i++)
 /////////////-- Slide Show -- /////////////////
 
 var numOfImg = 11;
-var imgArray = new Array();
+var imgArray = [];
 var imgIndex = 3;
 //Store image into a array
 
@@ -73,135 +73,10 @@ function slideSwitch() {
 
 }
 
-
-$(function() {
-    setInterval( "slideSwitch()", 5000 );
-});
-
-
 //////////////-- End of slide show --///////////////////////
 
 
-//   -- red box how -- //
-var redboxclass = document.getElementsByClassName("redbox");
-var boxtop = 20;
-var boxleft = 35;
-var count = 1;
-
-function boxCreate()
-{
-    var box = new Image();
-    box.id= "redbox";
-}
-
-function buildLeftHeart() {
-    var tempBoxtop =boxtop;
-    var tempBoxLeft = boxleft;
-    var tempCount = count;
-
-    for(var i=14; i>=1;i-=2)
-    {
-        for(var j =i; j>=1;j--)
-        {
-            var box = new Image();
-            box.className= "redbox";
-            box.style.top = tempBoxtop+"%";
-            box.style.left = tempBoxLeft+"%";
-            tempBoxtop += 5;
-            document.getElementById("main2").appendChild(box);
-        }
-        tempBoxLeft -= 5;
-        tempBoxtop = boxtop + 5*tempCount;
-        tempCount ++;
-    }
-}
-
-function buildRightHeart() {
-    var tempBoxtop =boxtop;
-    var tempBoxLeft = boxleft +20;
-    var tempCount = count;
-
-    for(var i=14; i>=1;i-=2)
-    {
-        for(var j =i; j>=1;j--)
-        {
-            var box = new Image();
-            box.className= "redbox";
-            box.style.top = tempBoxtop+"%";
-            box.style.left = tempBoxLeft+"%";
-            tempBoxtop += 5;
-            document.getElementById("main2").appendChild(box);
-        }
-        tempBoxLeft += 5;
-        tempBoxtop = boxtop + 5*tempCount;
-        tempCount ++;
-    }
-}
-
-function buildMidHeart() {
-    var tempBoxtop =boxtop + 10;
-    var tempBoxLeft = boxleft +5;
-
-    for(var i =1; i<=2; i++)
-    {
-        for(var j =1; j<=13;j++)
-        {
-            var box = new Image();
-            box.className= "redbox";
-            box.style.top = tempBoxtop +"%";
-            box.style.left = tempBoxLeft+"%";
-            tempBoxtop += 5;
-            document.getElementById("main2").appendChild(box);
-        }
-        tempBoxLeft += 10;
-        tempBoxtop =boxtop + 10;
-    }
-
-
-    tempBoxtop =boxtop + 15;
-    tempBoxLeft = boxtop + 25;
-
-    for(var j =1; j<=13;j++)
-    {
-        var box = new Image();
-        box.className= "redbox";
-        box.style.top = tempBoxtop +"%";
-        box.style.left = tempBoxLeft+"%";
-        tempBoxtop += 5;
-        document.getElementById("main2").appendChild(box);
-    }
-}
-
-function buildHeart() {
-    buildLeftHeart();
-    buildRightHeart();
-    buildMidHeart();
-}
-
-buildHeart();
-
-var $movingHeart = $("img.redbox");
-
-function animateHeart() {
-    $movingHeart.animate({opacity: 1, width:"5%", height: "5%", backgroundColor:"red"}, 500);
-    $movingHeart.animate({opacity: 0.6, width:"5.5%", height: "5.5%"
-    , boxShadow: "0px 0px 50px 50px red inset"}, 500);
-    $movingHeart.animate({opacity: 1, width:"5%", height: "5%"
-        , boxShadow: "0px 0px 10px 10px red inset"}, 500);
-}
-
-
-var heartStart = setInterval(animateHeart, 3000);
-
-setTimeout(function () {
-    clearInterval(heartStart);
-    $(".redbox").fadeOut();
-},10000);
-
-
-
-
-//  -- end of red box -- //
+//  -- scroll and opacity -- //
 
 var fadeStart=0 // 100px scroll or less will equiv to 1 opacity
     ,fadeUntil=800 // 200px scroll or more will equiv to 0 opacity
@@ -220,4 +95,172 @@ $(window).on('scroll', function(){
     }
     fading.css({opacity: opacity1})
     $px.html(offset);
+});
+
+//  -- end scroll and opacity -- //
+
+
+// -- main control -- //
+//************************************
+$(function() {
+    var mainPicMove = setInterval( "slideSwitch()", 5000 );
+    var picSwitchOn = true;
+
+    var heartStart;
+    var hearStartOn = false;
+
+    //   -- red box how -- //
+    var redboxclass = document.getElementsByClassName("redbox");
+    var boxtop = 20;
+    var boxleft = 35;
+    var count = 1;
+
+    function boxCreate()
+    {
+        var box = new Image();
+        box.id= "redbox";
+    }
+
+    function buildLeftHeart() {
+        var tempBoxtop =boxtop;
+        var tempBoxLeft = boxleft;
+        var tempCount = count;
+
+        for(var i=14; i>=1;i-=2)
+        {
+            for(var j =i; j>=1;j--)
+            {
+                var box = new Image();
+                box.className= "redbox";
+                box.style.top = tempBoxtop+"%";
+                box.style.left = tempBoxLeft+"%";
+                tempBoxtop += 5;
+                document.getElementById("main2").appendChild(box);
+            }
+            tempBoxLeft -= 5;
+            tempBoxtop = boxtop + 5*tempCount;
+            tempCount ++;
+        }
+    }
+
+    function buildRightHeart() {
+        var tempBoxtop =boxtop;
+        var tempBoxLeft = boxleft +20;
+        var tempCount = count;
+
+        for(var i=14; i>=1;i-=2)
+        {
+            for(var j =i; j>=1;j--)
+            {
+                var box = new Image();
+                box.className= "redbox";
+                box.style.top = tempBoxtop+"%";
+                box.style.left = tempBoxLeft+"%";
+                tempBoxtop += 5;
+                document.getElementById("main2").appendChild(box);
+            }
+            tempBoxLeft += 5;
+            tempBoxtop = boxtop + 5*tempCount;
+            tempCount ++;
+        }
+    }
+
+    function buildMidHeart() {
+        var tempBoxtop =boxtop + 10;
+        var tempBoxLeft = boxleft +5;
+
+        for(var i =1; i<=2; i++)
+        {
+            for(var j =1; j<=13;j++)
+            {
+                var box = new Image();
+                box.className= "redbox";
+                box.style.top = tempBoxtop +"%";
+                box.style.left = tempBoxLeft+"%";
+                tempBoxtop += 5;
+                document.getElementById("main2").appendChild(box);
+            }
+            tempBoxLeft += 10;
+            tempBoxtop =boxtop + 10;
+        }
+
+
+        tempBoxtop =boxtop + 15;
+        tempBoxLeft = boxtop + 25;
+
+        for(var j =1; j<=13;j++)
+        {
+            var box = new Image();
+            box.className= "redbox";
+            box.style.top = tempBoxtop +"%";
+            box.style.left = tempBoxLeft+"%";
+            tempBoxtop += 5;
+            document.getElementById("main2").appendChild(box);
+        }
+    }
+
+    function buildHeart() {
+        buildLeftHeart();
+        buildRightHeart();
+        buildMidHeart();
+    }
+
+    buildHeart();
+
+    var $movingHeart = $("img.redbox");
+
+    function animateHeart() {
+        $movingHeart.animate({opacity: 1, width:"5%", height: "5%", backgroundColor:"red"}, 500);
+        $movingHeart.animate({opacity: 0.6, width:"5.5%", height: "5.5%"
+            , boxShadow: "0px 0px 50px 50px red inset"}, 500);
+        $movingHeart.animate({opacity: 1, width:"5%", height: "5%"
+            , boxShadow: "0px 0px 10px 10px red inset"}, 500);
+    }
+
+
+/*
+    setTimeout(function () {
+        clearInterval(heartStart);
+        $(".redbox").fadeOut();
+    },10000);
+*/
+
+//  -- end of red box -- //
+
+    //  -- buttons -- //
+
+    var $button1 = $("#button1");
+    $button1.click(scrollToMain2);
+
+    var $button2 = $("#button2");
+    $button2.click(scrollToMain);
+
+
+    function scrollToMain2() {
+        $("body").animate({scrollTop: 700}, "slow");
+        clearInterval(mainPicMove);
+        picSwitchOn = false;
+        
+        if(hearStartOn == false)
+        {
+            heartStart = setInterval(animateHeart, 3000);
+            hearStartOn = true;
+        }
+    }
+
+    function scrollToMain() {
+        $("body").animate({scrollTop: 0}, "slow");
+
+        if(picSwitchOn == false )
+        {
+            mainPicMove = setInterval( "slideSwitch()", 5000 );
+            picSwitchOn = true;
+        }
+
+        clearInterval(heartStart);
+        hearStartOn = false;
+
+    }
+
+    //  -- end of buttons -- //
 });
