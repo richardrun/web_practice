@@ -98,7 +98,6 @@ bot nav bar
     width: 100%;
     height: 50px;
     position: fixed;
-    clear: both;
     z-index: 12;
     background-color: darkturquoise;
     display: inline-block;
@@ -106,6 +105,7 @@ bot nav bar
     border-radius: 20px;
     border-style: dotted;
     border-width: 1px;
+    bottom: 10px;;
 }
 
 .navDiv{
@@ -128,6 +128,10 @@ bot nav bar
     position: absolute;
 }
 
+#scrollPx{
+    float: right;
+}
+
 /*
 bot nav bar
 */
@@ -147,7 +151,7 @@ bot nav bar
     height: 650px;
     background-color: rgba(255, 100, 0, 1);
     z-index: 2;
-    top: 50px;
+    margin-top: 50px;
     border-width: 3px;
     border-style: solid;
     border-radius: 10px;
