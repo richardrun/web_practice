@@ -89,10 +89,45 @@ button{
     height: 100%;
 }
 
-#arow{
+
+/*
+bot nav bar
+*/
+
+#botNav{
     width: 100%;
+    height: 50px;
+    position: fixed;
     clear: both;
+    z-index: 12;
+    background-color: darkturquoise;
+    display: inline-block;
+
 }
+
+.navDiv{
+    width: 10%;
+    height: 100%;
+    left: 50px;
+    margin-right: 20px;
+    position: relative;
+    float: left;
+    background-color: #333333;
+    border: 2px solid black;
+    border-radius: 20px;
+    overflow: hidden;
+    line-height: 30%;
+}
+
+.navButton{
+    width: 100%;
+    height:100%;
+    position: absolute;
+}
+
+/*
+bot nav bar
+*/
 
 #main{
     width: 100%;
@@ -102,4 +137,16 @@ button{
     border-width: 3px;
     border-style: solid;
     border-radius: 10px;
+}
+
+.main2 {
+    width: 100%;
+    height: 650px;
+    background-color: rgba(255, 100, 0, 1);
+    z-index: 2;
+    top: 50px;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 10px;
+    position: relative;
 }

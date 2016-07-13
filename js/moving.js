@@ -75,7 +75,7 @@ function slideSwitch() {
 
 
 $(function() {
-    //setInterval( "slideSwitch()", 3000 );
+    setInterval( "slideSwitch()", 5000 );
 });
 
 
@@ -108,7 +108,7 @@ function buildLeftHeart() {
             box.style.top = tempBoxtop+"%";
             box.style.left = tempBoxLeft+"%";
             tempBoxtop += 5;
-            document.getElementById("main").appendChild(box);
+            document.getElementById("main2").appendChild(box);
         }
         tempBoxLeft -= 5;
         tempBoxtop = boxtop + 5*tempCount;
@@ -130,7 +130,7 @@ function buildRightHeart() {
             box.style.top = tempBoxtop+"%";
             box.style.left = tempBoxLeft+"%";
             tempBoxtop += 5;
-            document.getElementById("main").appendChild(box);
+            document.getElementById("main2").appendChild(box);
         }
         tempBoxLeft += 5;
         tempBoxtop = boxtop + 5*tempCount;
@@ -151,7 +151,7 @@ function buildMidHeart() {
             box.style.top = tempBoxtop +"%";
             box.style.left = tempBoxLeft+"%";
             tempBoxtop += 5;
-            document.getElementById("main").appendChild(box);
+            document.getElementById("main2").appendChild(box);
         }
         tempBoxLeft += 10;
         tempBoxtop =boxtop + 10;
@@ -168,7 +168,7 @@ function buildMidHeart() {
         box.style.top = tempBoxtop +"%";
         box.style.left = tempBoxLeft+"%";
         tempBoxtop += 5;
-        document.getElementById("main").appendChild(box);
+        document.getElementById("main2").appendChild(box);
     }
 }
 
@@ -193,6 +193,12 @@ function animateHeart() {
 
 var heartStart = setInterval(animateHeart, 3000);
 
+setTimeout(function () {
+    clearInterval(heartStart);
+    $(".redbox").fadeOut();
+},10000);
+
+
 
 
 //  -- end of red box -- //
@@ -206,7 +212,7 @@ var fadeStart=0 // 100px scroll or less will equiv to 1 opacity
 $(window).on('scroll', function(){
     var offset = $(document).scrollTop()
         ,opacity1=0
-        ,$px = $("#num");
+        ,$px = $("#botNav p");
     if( offset<=fadeStart ){
         opacity1=1;
     }else if( offset<=fadeUntil ){
