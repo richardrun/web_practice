@@ -75,7 +75,7 @@ function slideSwitch() {
 
 
 $(function() {
-    setInterval( "slideSwitch()", 3000 );
+    //setInterval( "slideSwitch()", 3000 );
 });
 
 
@@ -179,18 +179,37 @@ function buildHeart() {
 }
 
 buildHeart();
+
 var $movingHeart = $("img.redbox");
 
 function animateHeart() {
-    $movingHeart.animate({opacity: 0.5, width:"5%", height: "5%", backgroundColor:"red"}, 500);
+    $movingHeart.animate({opacity: 1, width:"5%", height: "5%", backgroundColor:"red"}, 500);
+    $movingHeart.animate({opacity: 0.8, width:"5.5%", height: "5.5%"}, 500);
     $movingHeart.animate({opacity: 1, width:"5%", height: "5%"}, 500);
-    $movingHeart.animate({opacity: 1, width:"5%", height: "5%"}, 500);
-    $movingHeart.animate({opacity: 0, width:"3%", height: "3%"}, 500);
 }
 
 
-setInterval(animateHeart, 4000);
+//var heartStart = setInterval(animateHeart, 3000);
 
 
 
 //  -- end of red box -- //
+
+var fadeStart=0 // 100px scroll or less will equiv to 1 opacity
+    ,fadeUntil=800 // 200px scroll or more will equiv to 0 opacity
+    ,fading = $('#main')
+    ;
+
+//
+$(window).on('scroll', function(){
+    var offset = $(document).scrollTop()
+        ,opacity1=0
+        ,$px = $("#num");
+    if( offset<=fadeStart ){
+        opacity1=1;
+    }else if( offset<=fadeUntil ){
+        opacity1=1-offset/fadeUntil;
+    }
+    fading.css({opacity: opacity1})
+    $px.html(offset);
+});
