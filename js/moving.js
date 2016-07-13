@@ -159,8 +159,8 @@ function buildMidHeart() {
 
 
     tempBoxtop =boxtop + 15;
-    tempBoxLeft = boxtop + 10;
-    
+    tempBoxLeft = boxtop + 25;
+
     for(var j =1; j<=13;j++)
     {
         var box = new Image();
@@ -172,8 +172,25 @@ function buildMidHeart() {
     }
 }
 
-buildLeftHeart();
-buildRightHeart();
-buildMidHeart();
+function buildHeart() {
+    buildLeftHeart();
+    buildRightHeart();
+    buildMidHeart();
+}
+
+buildHeart();
+var $movingHeart = $("img.redbox");
+
+function animateHeart() {
+    $movingHeart.animate({opacity: 0.5, width:"5%", height: "5%", backgroundColor:"red"}, 500);
+    $movingHeart.animate({opacity: 1, width:"5%", height: "5%"}, 500);
+    $movingHeart.animate({opacity: 1, width:"5%", height: "5%"}, 500);
+    $movingHeart.animate({opacity: 0, width:"3%", height: "3%"}, 500);
+}
+
+
+setInterval(animateHeart, 4000);
+
+
 
 //  -- end of red box -- //

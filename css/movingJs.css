@@ -47,8 +47,8 @@
     top:20%;
     left: 35%;
     position: absolute;
-    background-color: hotpink;
-    opacity: 0.5;
+    background-color: red;
+    opacity: 0;
     z-index: 11;
     border: 1px solid black;
 }
