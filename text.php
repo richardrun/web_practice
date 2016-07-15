@@ -27,14 +27,23 @@ $success = mysqli_real_connect(
     $db,
     $port
 );
+
+
 echo $success?"success":"fail";
 
 $sql = "SELECT id FROM staff WHERE id=1 or 2 ";
+$addColumn = "ALTER TABLE staff ADD Password INT ";
 
 $result = $link->query($sql);
+$success1 = $link->query($addColumn);
+echo $success1?"success111":"fail111";
+
 
 $row = $result->fetch_row();
 printf("<br/>age=".$row[0]."<br/>");
+
+
+
 $link->close();
 
 echo "FINISH";
